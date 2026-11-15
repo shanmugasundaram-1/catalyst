@@ -1,6 +1,8 @@
-// In production, set VITE_API_BASE_URL to your backend URL (e.g. https://ayucare.onrender.com/api)
-// In development, Vite proxy handles /api → localhost:8000
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+// Live production Railway backend URL with fallback
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    ? 'https://ayucare-backend-production.up.railway.app/api'
+    : '/api');
 
 export function getToken() {
   return localStorage.getItem('ayucare_token');
