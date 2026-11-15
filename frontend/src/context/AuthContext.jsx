@@ -98,9 +98,9 @@ export function AuthProvider({ children }) {
   // Quick switch role utility (for instant 1-click hackathon judging & demo!)
   const quickSwitchRole = async (targetRole) => {
     const passcodes = {
-      ELDER: { code: '1111', name: 'Sundaram Raman (Elder)', email: 'sundaram@ayucare.demo', lang: 'ta' },
+      ELDER: { code: '1111', name: 'Broly (Elder)', email: 'broly@ayucare.demo', lang: 'ta' },
       CARETAKER: { code: '2222', name: 'Priya (Nurse Caretaker)', email: 'priya.care@ayucare.demo', lang: 'en' },
-      FAMILY: { code: '3333', name: 'Karthik Sundaram (Son)', email: 'karthik.family@ayucare.demo', lang: 'hi' }
+      FAMILY: { code: '3333', name: 'Karthik (Son)', email: 'karthik.family@ayucare.demo', lang: 'hi' }
     };
     const cred = passcodes[targetRole];
     if (!cred) return;

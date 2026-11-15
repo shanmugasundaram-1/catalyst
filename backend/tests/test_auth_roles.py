@@ -32,8 +32,8 @@ def test_join_roles(db):
     elder_res = join_profile(JoinProfileRequest(
         profile_id="DEMO-ELDER",
         passcode="1111",
-        name="Sundaram Raman",
-        email="sundaram@test.demo"
+        name="Broly",
+        email="broly@test.demo"
     ), db=db)
     assert elder_res.role == "ELDER"
     assert elder_res.profile_id == "DEMO-ELDER"
@@ -95,8 +95,8 @@ def test_elder_vs_caretaker_approval_workflow(db):
     elder_user = CurrentUser(
         profile_id="DEMO-ELDER",
         role="ELDER",
-        name="Sundaram Raman",
-        email="sundaram@test.demo"
+        name="Broly",
+        email="broly@test.demo"
     )
     approval_result = review_pending_change(
         change_id=pending_id,
@@ -105,14 +105,14 @@ def test_elder_vs_caretaker_approval_workflow(db):
         db=db
     )
     assert approval_result.status == "APPROVED"
-    assert approval_result.reviewed_by == "Sundaram Raman"
+    assert approval_result.reviewed_by == "Broly"
 
 def test_dose_tracking_and_stock(db):
     elder_user = CurrentUser(
         profile_id="DEMO-ELDER",
         role="ELDER",
-        name="Sundaram Raman",
-        email="sundaram@test.demo"
+        name="Broly",
+        email="broly@test.demo"
     )
 
     overview = get_today_overview(current_user=elder_user, db=db)
@@ -127,14 +127,14 @@ def test_dose_tracking_and_stock(db):
         db=db
     )
     assert action_res.status == "TAKEN"
-    assert action_res.taken_by_name == "Sundaram Raman"
+    assert action_res.taken_by_name == "Broly"
 
 def test_emergency_sos(db):
     elder_user = CurrentUser(
         profile_id="DEMO-ELDER",
         role="ELDER",
-        name="Sundaram Raman",
-        email="sundaram@test.demo"
+        name="Broly",
+        email="broly@test.demo"
     )
     sos_res = trigger_sos(
         payload=SOSRequest(location_note="Bedside"),

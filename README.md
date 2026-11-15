@@ -182,7 +182,7 @@ npm run dev
 
 | Role | Profile ID | Passcode | Name | Language | Capabilities |
 |---|---|---|---|---|---|
-| 👴 **Elder** | `DEMO-ELDER` | **`1111`** | Sundaram Raman | **Tamil (ta)** | Full control · approves changes · SOS · voice assistant |
+| 👴 **Elder** | `DEMO-ELDER` | **`1111`** | Broly | **Tamil (ta)** | Full control · approves changes · SOS · voice assistant |
 | 🩺 **Caretaker** | `DEMO-ELDER` | **`2222`** | Priya (Nurse) | **English (en)** | Manages meds & appointments (proposals need elder approval) |
 | 👨‍👩‍👧 **Family** | `DEMO-ELDER` | **`3333`** | Karthik (Son) | **Hindi (hi)** | Observer · receives Hindi alerts & summaries |
 

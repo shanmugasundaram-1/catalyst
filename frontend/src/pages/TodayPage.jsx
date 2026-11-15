@@ -72,7 +72,7 @@ export default function TodayPage({ onOpenAI, onOpenSafety, onOpenSummary, onOpe
             {new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-0.5">
-            Vanakkam, {user?.profile_name || 'Sundaram'}! 🌸
+            Vanakkam, {user?.profile_name || 'Broly'}! 🌸
           </h2>
           <p className="text-slate-600 font-medium text-sm sm:text-base mt-1">
             Keeping you at the center of your healthcare decisions every day.

@@ -82,7 +82,7 @@ def test_voice_intent_and_reply_language(db):
         query="अगली दवा कब है?",
         user_lang="hi",
         profile_id="DEMO-ELDER",
-        user_name="Sundaram",
+        user_name="broly",
         user_role="ELDER",
         db=db
     )
@@ -95,7 +95,7 @@ def test_voice_intent_and_reply_language(db):
         query="Next maathirai eppo?",
         user_lang="ta",
         profile_id="DEMO-ELDER",
-        user_name="Sundaram",
+        user_name="broly",
         user_role="ELDER",
         db=db
     )
@@ -108,7 +108,7 @@ def test_voice_intent_and_reply_language(db):
         query="When is my next dose?",
         user_lang="en",
         profile_id="DEMO-ELDER",
-        user_name="Sundaram",
+        user_name="broly",
         user_role="ELDER",
         db=db
     )
@@ -138,7 +138,7 @@ def test_mark_dose_taken_updates_dose_log(db):
         query=f"I took my {med.name}",
         user_lang="en",
         profile_id="DEMO-ELDER",
-        user_name="Sundaram",
+        user_name="broly",
         user_role="ELDER",
         db=db
     )
@@ -159,7 +159,7 @@ def test_voice_sos_confirmation_flow(db):
         query="Emergency SOS",
         user_lang="en",
         profile_id="DEMO-ELDER",
-        user_name="Sundaram",
+        user_name="broly",
         user_role="ELDER",
         db=db,
         confirmed_sos=False
@@ -173,7 +173,7 @@ def test_voice_sos_confirmation_flow(db):
         query="Yes send SOS",
         user_lang="en",
         profile_id="DEMO-ELDER",
-        user_name="Sundaram",
+        user_name="broly",
         user_role="ELDER",
         db=db,
         confirmed_sos=True

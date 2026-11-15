@@ -34,7 +34,7 @@ def test_drug_interaction_checker():
 
 def test_weekly_summary_multilingual():
     summary = generate_weekly_family_summary(
-        elder_name="Sundaram Raman",
+        elder_name="Broly",
         adherence_pct=92.5,
         taken_count=26,
         missed_count=2,
@@ -63,7 +63,7 @@ def test_email_notifications_and_audit():
     # 1. Upcoming dose email
     send_upcoming_dose_email(
         elder_email="elder@test.org",
-        elder_name="Sundaram Raman",
+        elder_name="Broly",
         med_name="Metformin",
         dosage="500 mg",
         scheduled_time_str="08:30 AM",
@@ -74,7 +74,7 @@ def test_email_notifications_and_audit():
     send_escalation_missed_dose(
         level=1,
         recipients=["elder@test.org"],
-        elder_name="Sundaram Raman",
+        elder_name="Broly",
         med_name="Metformin",
         dosage="500 mg",
         scheduled_time_str="08:30 AM"
@@ -84,7 +84,7 @@ def test_email_notifications_and_audit():
     send_escalation_missed_dose(
         level=2,
         recipients=["caretaker@test.org"],
-        elder_name="Sundaram Raman",
+        elder_name="Broly",
         med_name="Metformin",
         dosage="500 mg",
         scheduled_time_str="08:30 AM"
@@ -94,7 +94,7 @@ def test_email_notifications_and_audit():
     send_escalation_missed_dose(
         level=3,
         recipients=["family@test.org"],
-        elder_name="Sundaram Raman",
+        elder_name="Broly",
         med_name="Metformin",
         dosage="500 mg",
         scheduled_time_str="08:30 AM"
@@ -103,7 +103,7 @@ def test_email_notifications_and_audit():
     # 5. SOS Alert
     send_sos_alert(
         recipients=["caretaker@test.org", "family@test.org"],
-        elder_name="Sundaram Raman",
+        elder_name="Broly",
         timestamp_str="Sunday 10:30 AM",
         emergency_phone="+91 98401 23456",
         notes="Bedside emergency"

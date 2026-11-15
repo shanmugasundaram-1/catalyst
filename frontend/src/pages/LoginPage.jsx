@@ -58,9 +58,9 @@ export default function LoginPage() {
 
   const handleQuickDemo = async (role) => {
     const demos = {
-      ELDER: { code: '1111', name: 'Sundaram Raman (Elder)', email: 'sundaram@ayucare.demo', lang: 'ta' },
+      ELDER: { code: '1111', name: 'Broly (Elder)', email: 'broly@ayucare.demo', lang: 'ta' },
       CARETAKER: { code: '2222', name: 'Priya (Nurse Caretaker)', email: 'priya.care@ayucare.demo', lang: 'en' },
-      FAMILY: { code: '3333', name: 'Karthik Sundaram (Son)', email: 'karthik.family@ayucare.demo', lang: 'hi' }
+      FAMILY: { code: '3333', name: 'Karthik (Son)', email: 'karthik.family@ayucare.demo', lang: 'hi' }
     };
     const c = demos[role];
     setProfileId('DEMO-ELDER');
@@ -261,7 +261,7 @@ export default function LoginPage() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. Sundaram"
+                    placeholder="e.g. Broly"
                     className="w-full p-3 rounded-xl border border-slate-300 font-semibold text-slate-900 text-sm focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
@@ -296,7 +296,7 @@ export default function LoginPage() {
                   required
                   value={regFullName}
                   onChange={(e) => setRegFullName(e.target.value)}
-                  placeholder="e.g. Sundaram Raman"
+                  placeholder="e.g. Broly"
                   className="w-full p-2.5 rounded-xl border border-slate-300 font-semibold text-slate-900 text-sm focus:outline-none"
                 />
               </div>
@@ -308,7 +308,7 @@ export default function LoginPage() {
                   required
                   value={regCreatorEmail}
                   onChange={(e) => setRegCreatorEmail(e.target.value)}
-                  placeholder="sundaram@ayucare.org"
+                  placeholder="broly@ayucare.org"
                   className="w-full p-2.5 rounded-xl border border-slate-300 font-semibold text-slate-900 text-sm focus:outline-none"
                 />
               </div>

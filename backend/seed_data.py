@@ -26,7 +26,7 @@ def seed():
         # 1. Create Elder Profile
         demo_profile = Profile(
             id=profile_id,
-            full_name="Sundaram Raman",
+            full_name="Broly",
             age=74,
             blood_group="B+",
             emergency_phone="+91 98401 23456",
@@ -45,8 +45,8 @@ def seed():
             ProfileMember(
                 profile_id=profile_id,
                 role="ELDER",
-                name="Sundaram Raman",
-                email="sundaram@ayucare.demo",
+                name="Broly",
+                email="broly@ayucare.demo",
                 phone="+91 98401 23456",
                 language="ta"
             ),
@@ -61,7 +61,7 @@ def seed():
             ProfileMember(
                 profile_id=profile_id,
                 role="FAMILY",
-                name="Karthik Sundaram (Son)",
+                name="Karthik (Son)",
                 email="karthik.family@ayucare.demo",
                 phone="+65 9123 4567",
                 language="hi"
@@ -85,7 +85,7 @@ def seed():
                 low_stock_threshold=5,
                 instructions="Take immediately after morning and evening meals.",
                 is_active=True,
-                created_by_name="Sundaram Raman",
+                created_by_name="Broly",
                 created_by_role="ELDER"
             ),
             Medication(
@@ -115,7 +115,7 @@ def seed():
                 low_stock_threshold=5,
                 instructions="Take at night after dinner. Avoid grapefruit.",
                 is_active=True,
-                created_by_name="Sundaram Raman",
+                created_by_name="Broly",
                 created_by_role="ELDER"
             ),
             Medication(
@@ -158,7 +158,7 @@ def seed():
                         scheduled_time=sched_dt,
                         status=st,
                         taken_at=sched_dt + timedelta(minutes=5) if not is_missed else None,
-                        taken_by_name="Sundaram Raman" if not is_missed else None,
+                        taken_by_name="Broly" if not is_missed else None,
                         escalation_level=1 if is_missed else 0
                     )
                     db.add(log)
@@ -171,7 +171,7 @@ def seed():
             scheduled_time=datetime.combine(today, time(8, 30)),
             status="TAKEN",
             taken_at=datetime.combine(today, time(8, 35)),
-            taken_by_name="Sundaram Raman",
+            taken_by_name="Broly",
             escalation_level=0
         ))
         # 09:00 Telmisartan -> TAKEN
@@ -181,7 +181,7 @@ def seed():
             scheduled_time=datetime.combine(today, time(9, 0)),
             status="TAKEN",
             taken_at=datetime.combine(today, time(9, 5)),
-            taken_by_name="Sundaram Raman",
+            taken_by_name="Broly",
             escalation_level=0
         ))
         # 13:30 Eco-Aspirin -> MISSED (escalation level 1 active)
@@ -223,11 +223,11 @@ def seed():
                 location="Apollo Heart Centre, Room 204",
                 notes="Quarterly blood pressure check and ECG review.",
                 is_completed=False,
-                created_by_name="Karthik Sundaram (Son)"
+                created_by_name="Karthik (Son)"
             ),
             Appointment(
                 profile_id=profile_id,
-                doctor_name="Meenakshi Sundaram",
+                doctor_name="Meenakshi Broly",
                 specialty="Diabetologist & Endocrinologist",
                 appointment_time=datetime.combine(next_week, time(16, 0)),
                 location="Diabetes & Thyroid Clinic, 2nd Cross",
@@ -268,8 +268,8 @@ def seed():
             ActivityLog(
                 profile_id=profile_id,
                 action="PROFILE_SETUP",
-                details="Elder profile initialized for Sundaram Raman with passcode protection.",
-                performed_by_name="Sundaram Raman",
+                details="Elder profile initialized for Broly with passcode protection.",
+                performed_by_name="Broly",
                 performed_by_role="ELDER"
             ),
             ActivityLog(
@@ -282,15 +282,15 @@ def seed():
             ActivityLog(
                 profile_id=profile_id,
                 action="MEMBER_JOINED",
-                details="Karthik Sundaram (Son) joined as FAMILY.",
-                performed_by_name="Karthik Sundaram",
+                details="Karthik (Son) joined as FAMILY.",
+                performed_by_name="Karthik",
                 performed_by_role="FAMILY"
             ),
             ActivityLog(
                 profile_id=profile_id,
                 action="DOSE_TAKEN",
-                details="Sundaram Raman marked Metformin 500mg as TAKEN.",
-                performed_by_name="Sundaram Raman",
+                details="Broly marked Metformin 500mg as TAKEN.",
+                performed_by_name="Broly",
                 performed_by_role="ELDER"
             ),
             ActivityLog(
@@ -303,7 +303,7 @@ def seed():
             ActivityLog(
                 profile_id=profile_id,
                 action="CHANGE_PROPOSED",
-                details="Priya (Care Nurse) proposed adding Gabapentin 100mg. Awaiting Elder Sundaram's approval.",
+                details="Priya (Care Nurse) proposed adding Gabapentin 100mg. Awaiting Elder Broly's approval.",
                 performed_by_name="Priya (Care Nurse)",
                 performed_by_role="CARETAKER"
             )
