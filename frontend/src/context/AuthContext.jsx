@@ -5,10 +5,7 @@ import i18n from '../i18n';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('ayucare_user');
-    return saved ? JSON.parse(saved) : null;
-  });
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [largeFont, setLargeFont] = useState(() => {
     return localStorage.getItem('ayucare_large_font') === 'true';
@@ -50,7 +47,10 @@ export function AuthProvider({ children }) {
         }
       } catch (err) {
         console.error('Session verify failed:', err);
-        // If demo profile is accessible, auto-login with default elder for seamless hackathon UX
+        // Clear corrupted or outdated local storage tokens
+        setToken(null);
+        localStorage.removeItem('ayucare_user');
+        setUser(null);
       } finally {
         setLoading(false);
       }
