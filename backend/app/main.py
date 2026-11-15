@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
     # Startup: create DB tables and ensure schema compatibility
     Base.metadata.create_all(bind=engine)
     ensure_schema_compatibility()
-    # Auto-seed demo data on first startup (safe: checks if already seeded)
+    # Auto-seed demo data on startup if not present
     try:
         from app.core.database import SessionLocal
         from app.models import Profile
@@ -32,17 +32,32 @@ async def lifespan(app: FastAPI):
         try:
             exists = db.query(Profile).filter(Profile.id == "DEMO-ELDER").first()
             if not exists:
-                import subprocess, sys, os
-                seed_path = os.path.join(os.path.dirname(__file__), "..", "..", "seed_data.py")
-                if os.path.exists(seed_path):
-                    subprocess.run([sys.executable, seed_path], check=False, timeout=60)
+                import sys, os
+                # Look for seed_data.py in common locations
+                possible_paths = [
+                    os.path.join(os.path.dirname(__file__), "..", "seed_data.py"),
+                    os.path.join(os.getcwd(), "backend", "seed_data.py"),
+                    os.path.join(os.getcwd(), "seed_data.py")
+                ]
+                for sp in possible_paths:
+                    if os.path.exists(sp):
+                        import importlib.util
+                        spec = importlib.util.spec_from_file_location("seed_module", sp)
+                        seed_mod = importlib.util.module_from_spec(spec)
+                        spec.loader.exec_module(seed_mod)
+                        if hasattr(seed_mod, "seed_demo_data"):
+                            seed_mod.seed_demo_data()
+                        break
         finally:
             db.close()
     except Exception as e:
         import logging
-        logging.getLogger("ayucare").warning(f"Auto-seed skipped: {e}")
+        logging.getLogger("ayucare").warning(f"Auto-seed exception: {e}")
     # Start background scheduler
     start_scheduler()
+    yield
+    # Shutdown
+    stop_scheduler()
     yield
     # Shutdown
     stop_scheduler()
