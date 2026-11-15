@@ -1,0 +1,54 @@
+# ============================================================
+# AyuCare - Root .gitignore
+# ============================================================
+
+# ── Secrets & Environment ───────────────────────────────────
+.env
+backend/.env
+*.env
+!.env.example
+!backend/.env.example
+
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Database files (never commit DB data) ───────────────────
+*.db
+*.sqlite3
+*.sqlite
+ayucare.db
+
+# ── Node / Frontend ─────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+.pnp
+.pnp.js
+
+# ── IDE & OS ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ────────────────────────────────────────────────────
+*.log
+logs/
