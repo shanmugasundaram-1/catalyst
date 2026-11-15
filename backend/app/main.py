@@ -24,6 +24,23 @@ async def lifespan(app: FastAPI):
     # Startup: create DB tables and ensure schema compatibility
     Base.metadata.create_all(bind=engine)
     ensure_schema_compatibility()
+    # Auto-seed demo data on first startup (safe: checks if already seeded)
+    try:
+        from app.core.database import SessionLocal
+        from app.models import Profile
+        db = SessionLocal()
+        try:
+            exists = db.query(Profile).filter(Profile.id == "DEMO-ELDER").first()
+            if not exists:
+                import subprocess, sys, os
+                seed_path = os.path.join(os.path.dirname(__file__), "..", "..", "seed_data.py")
+                if os.path.exists(seed_path):
+                    subprocess.run([sys.executable, seed_path], check=False, timeout=60)
+        finally:
+            db.close()
+    except Exception as e:
+        import logging
+        logging.getLogger("ayucare").warning(f"Auto-seed skipped: {e}")
     # Start background scheduler
     start_scheduler()
     yield
@@ -44,6 +61,9 @@ _cors_origins = list({
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     settings.FRONTEND_URL,
+    # Vercel deployment patterns
+    "https://ayucare-catalyst.vercel.app",
+    "https://catalyst-shanmugasundaram-1.vercel.app",
 })
 # Only allow wildcard in development; never in production
 if settings.APP_ENV == "development":

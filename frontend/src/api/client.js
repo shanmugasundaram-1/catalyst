@@ -1,4 +1,6 @@
-const API_BASE = '/api';
+// In production, set VITE_API_BASE_URL to your backend URL (e.g. https://ayucare.onrender.com/api)
+// In development, Vite proxy handles /api → localhost:8000
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 export function getToken() {
   return localStorage.getItem('ayucare_token');
