@@ -33,7 +33,6 @@ async def lifespan(app: FastAPI):
             exists = db.query(Profile).filter(Profile.id == "DEMO-ELDER").first()
             if not exists:
                 import sys, os
-                # Look for seed_data.py in common locations
                 possible_paths = [
                     os.path.join(os.path.dirname(__file__), "..", "seed_data.py"),
                     os.path.join(os.getcwd(), "backend", "seed_data.py"),
@@ -45,7 +44,9 @@ async def lifespan(app: FastAPI):
                         spec = importlib.util.spec_from_file_location("seed_module", sp)
                         seed_mod = importlib.util.module_from_spec(spec)
                         spec.loader.exec_module(seed_mod)
-                        if hasattr(seed_mod, "seed_demo_data"):
+                        if hasattr(seed_mod, "seed"):
+                            seed_mod.seed()
+                        elif hasattr(seed_mod, "seed_demo_data"):
                             seed_mod.seed_demo_data()
                         break
         finally:
